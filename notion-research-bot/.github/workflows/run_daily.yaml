@@ -1,0 +1,35 @@
+name: Run Notion Research Bot Daily
+
+on:
+  schedule:
+    - cron: '30 13 * * *' # 9:30am ET daily
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install openai requests
+
+      - name: Populate config.py from secrets
+        run: |
+          echo "# Populated by GitHub Actions" > notion-research-bot/config.py
+          echo "NOTION_API_KEY = \"${{ secrets.NOTION_API_KEY }}\"" >> notion-research-bot/config.py
+          echo "NOTION_DATABASE_ID = \"${{ secrets.NOTION_DATABASE_ID }}\"" >> notion-research-bot/config.py
+          echo "OPENAI_API_KEY = \"${{ secrets.OPENAI_API_KEY }}\"" >> notion-research-bot/config.py
+          echo "GPT_MODEL = \"gpt-4o\"" >> notion-research-bot/config.py
+
+      - name: Run daily research bot
+        run: |
+          python3 notion-research-bot/main.py 
