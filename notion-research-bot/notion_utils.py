@@ -46,17 +46,24 @@ def get_today_topic():
 
 def update_research_output(page_id, content):
     """
-    Update the 'Research Report' rich_text property of the given page.
+    Append a paragraph block to the body of the Notion page.
     """
-    url = f"{NOTION_API_URL}/pages/{page_id}"
+    url = f"{NOTION_API_URL}/blocks/{page_id}/children"
     payload = {
-        "properties": {
-            "Research Report": {
-                "rich_text": [
-                    {"type": "text", "text": {"content": content}}
-                ]
+        "children": [
+            {
+                "object": "block",
+                "type": "paragraph",
+                "paragraph": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": content}
+                        }
+                    ]
+                }
             }
-        }
+        ]
     }
     resp = requests.patch(url, headers=HEADERS, json=payload)
-    resp.raise_for_status() 
+    resp.raise_for_status()

@@ -14,7 +14,8 @@ def generate_report(topic):
         - Use credible sources and cite them inline (e.g., [1], [2]).
         - Cover background, current debates, and future directions.
         - Structure with clear headings and bullet points where helpful.
-        - Be concise but thorough, and avoid speculation.
+        - Be concise but thorough, and avoid speculation. The total read time of the report should aim to be 10-15 minutes, but can be
+          shorter or longer depending on the topic's depth and perceived importance to humankind.
         
         Topic: {topic}
         """
