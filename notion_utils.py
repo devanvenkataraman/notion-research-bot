@@ -22,7 +22,9 @@ def get_today_topic():
     payload = {
         "filter": {
             "property": "Date",
-            "date": {"equals": today}
+            "date": {
+                "equals": today  # today = 'YYYY-MM-DD'
+            }
         }
     }
     resp = requests.post(url, headers=HEADERS, json=payload)
