@@ -24,7 +24,7 @@ jobs:
 
       - name: Populate config.py from secrets
         run: |
-          echo "# Populated by GitHub Actions" > notion-research-bot/config.py
+          echo "# Populated by GitHub Actions" > config.py
           echo "NOTION_API_KEY = \"${{ secrets.NOTION_API_KEY }}\"" >> config.py
           echo "NOTION_DATABASE_ID = \"${{ secrets.NOTION_DATABASE_ID }}\"" >> config.py
           echo "OPENAI_API_KEY = \"${{ secrets.OPENAI_API_KEY }}\"" >> config.py
