@@ -32,4 +32,4 @@ jobs:
 
       - name: Run daily research bot
         run: |
-          python3 notion-research-bot/main.py 
+          python3 main.py 

@@ -15,7 +15,7 @@ Automate daily research reports in Notion using OpenAI GPT-4o and GitHub Actions
 ## 🗂️ Project Structure
 
 ```
-notion-research-bot/
+research-a-day/
 ├── .github/
 │   └── workflows/
 │       └── run_daily.yaml
