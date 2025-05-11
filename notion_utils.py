@@ -17,6 +17,7 @@ def get_today_topic():
     Returns (page_id, topic_string) or (None, None) if not found.
     """
     today = datetime.date.today().isoformat()
+    print("Querying Notion for date:", today)
     url = f"{NOTION_API_URL}/databases/{NOTION_DATABASE_ID}/query"
     payload = {
         "filter": {
